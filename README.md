@@ -37,7 +37,7 @@ first for customizing the workout, or they can choose to use the default mode
 (my personal favourite is 50:10) and randomized 28 exercises.
 
 ## Architecture and Technologies
-* ``Javascript for logic
+* `Javascript` for logic
 
 
 
