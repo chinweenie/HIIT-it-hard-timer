@@ -1,9 +1,9 @@
-import customizable from './customize';
+
 export default class Timer {
-    constructor(workInterval, restInterval, rounds){
-        this.workInterval = workInterval;
-        this.restInterval = restInterval;
-        this.rounds = rounds;
+    constructor(){
+        this.workInterval = 50;
+        this.restInterval = 10;
+        this.rounds = 28;
         this.rest = false;
         this.interval;
         this.paused = false;
@@ -14,6 +14,19 @@ export default class Timer {
         this.startTimer = this.startTimer.bind(this);
         this.pauseTimer = this.pauseTimer.bind(this);
         this.resetTimer = this.resetTimer.bind(this);
+        this.updateIntervals = this.updateIntervals.bind(this)
+    }
+
+    updateIntervals(){
+        const workInterval = document.getElementById('workInterval');
+        const restInterval = document.getElementById('restInterval');
+        const rounds = document.getElementById('rounds');
+        this.workInterval = Math.floor(workInterval.value * 1);
+        this.restInterval = Math.floor(restInterval.value * 1);
+        this.seconds = this.restInterval;
+        this.rounds = Math.floor(rounds.value * 1);
+        secondStatus.innerHTML = this.restInterval;
+        debugger
     }
 
     countDown(){
@@ -57,6 +70,7 @@ export default class Timer {
     }
 
     startTimer(e){
+        debugger
         this.interval = window.setInterval(this.countDown, 1000);
         if (pauseButton.classList.contains('hidden')){
             pauseButton.classList.remove('hidden');
@@ -86,9 +100,10 @@ export default class Timer {
     }
 
 }
-
+const timer = new Timer();
+const settingButton = document.getElementById('settings');
+settingButton.addEventListener('click', timer.updateIntervals)
 const secondStatus = document.getElementById('secondStatus');
-const timer = new Timer(10,10,2);
 const status = document.getElementById('status');
 const startButton = document.getElementById('start-button');
 const pauseButton = document.getElementById('pause-button');
