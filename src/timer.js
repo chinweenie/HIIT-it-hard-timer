@@ -1,13 +1,15 @@
 
 export default class Timer {
     constructor(){
-        this.workInterval = 50;
-        this.restInterval = 10;
-        this.rounds = 28;
+        this.workInterval = 0;
+        this.restInterval = 0;
+        this.rounds = 0;
         this.rest = false;
+        this.roundCount = 0;
         this.interval;
         this.paused = false;
         this.seconds = this.restInterval;
+
         this.countDown = this.countDown.bind(this);
         this.checkStatus = this.checkStatus.bind(this);
         this.changeStatus = this.changeStatus.bind(this);
@@ -15,6 +17,7 @@ export default class Timer {
         this.pauseTimer = this.pauseTimer.bind(this);
         this.resetTimer = this.resetTimer.bind(this);
         this.updateIntervals = this.updateIntervals.bind(this)
+        this.checkFinish = this.checkFinish.bind(this);
     }
 
     updateIntervals(){
@@ -26,7 +29,6 @@ export default class Timer {
         this.seconds = this.restInterval;
         this.rounds = Math.floor(rounds.value * 1);
         secondStatus.innerHTML = this.restInterval;
-        debugger
     }
 
     countDown(){
@@ -35,14 +37,44 @@ export default class Timer {
         this.checkStatus();
     }
 
-    checkStatus(){
-        if (this.rest && this.seconds === 0){
+    checkStatus(){  
+        if (this.rest && this.seconds === 0) {
+            this.checkFinish();
             this.rest = false;
             this.changeStatus();
-        } else if (!this.rest && this.seconds === 0){
+        } else if (!this.rest && this.seconds === 0) {
             this.rest = true;
+            this.roundCount += 1;
             this.changeStatus();
+        }    
+    }
+
+    checkFinish(){
+        debugger
+        if (this.rounds === this.roundCount){
+            debugger
+            window.clearInterval(this.interval);
+
+            this.interval = undefined;
+            this.workInterval = 0;
+            this.restInterval = 0;
+            this.seconds = 0;
+            this.rest = false;
+            this.paused = false;
+            this.roundCount = 0;
+            secondStatus.innerHTML = this.seconds;
+
+            if (!pauseButton.classList.contains('hidden')) {
+                pauseButton.classList.add('hidden');
+            }
+            pauseButton.innerHTML = 'Pause';
+
+            if (startButton.classList.contains('hidden')) {
+                startButton.classList.remove('hidden');
+            }
+            status.innerHTML = 'Congratulations! You have completed your workout today!';
         }
+        debugger
     }
 
     changeStatus(){
@@ -70,7 +102,6 @@ export default class Timer {
     }
 
     startTimer(e){
-        debugger
         this.interval = window.setInterval(this.countDown, 1000);
         if (pauseButton.classList.contains('hidden')){
             pauseButton.classList.remove('hidden');
@@ -82,10 +113,12 @@ export default class Timer {
         window.clearInterval(this.interval);
 
         this.interval = undefined;
-        this.seconds = this.restInterval;
+        this.workInterval = 0;
+        this.restInterval = 0;
+        this.seconds = 0;
         this.rest = false;
         this.paused = false;
-
+        this.roundCount = 0;
         secondStatus.innerHTML = this.seconds;
         status.innerHTML = 'Rest';
 

@@ -12,10 +12,14 @@
     <!-- User's input' -->
     <div class="customizable-holder">
         <div id="form">
-            <input type="number" id="workInterval" value="50" min="0" max="60"> SECOND WORK
-            <input type="number" id="restInterval" value="10" min="0" max="60"> SECONDS REST
-            <input type="number" id="rounds" value="28" min="1"> ROUNDS
+            <input type="number" id="workInterval" value="0" min="0" max="60"> SECOND WORK
+            <input type="number" id="restInterval" value="0" min="0" max="60"> SECONDS REST
+            <input type="number" id="rounds" value="0" min="1"> ROUNDS
             <button id="settings">Save</button>
+        </div>
+
+        <div id="customizer">
+
         </div>
     </div>
 
@@ -23,7 +27,7 @@
     <div class="timer-holder">
         <div id="timer">
             <h1 id="status">Rest</h1>
-            <h1 id="secondStatus">10</h1>
+            <h1 id="secondStatus">0</h1>
             <button id="start-button">Start</button>
             <button id="pause-button" class="hidden">Pause</button>
             <button id="reset-button">Reset</button>
