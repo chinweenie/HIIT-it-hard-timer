@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HIIT it hard timer</title>
+    <script type="text/javascript" src="dist/main.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" type="text/css" href="./dist/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/css/styles.css" />
+</head>
+<body>
+    <h1>Welcome to the HIIT it hard workout timer!</h1>
+
+    <!-- User's input' -->
+    <div class="customizable-holder">
+        <div id="form">
+            <input type="number" id="workInterval" value="50" min="0" max="60"> SECOND WORK
+            <input type="number" id="restInterval" value="10" min="0" max="60"> SECONDS REST
+            <input type="number" id="rounds" value="28" min="1"> ROUNDS
+            <button id="settings">Save</button>
+        </div>
+    </div>
+
+    <!-- Timer display -->
+    <div class="timer-holder">
+        <div id="timer">
+            <h1 id="status">Rest</h1>
+            <h1 id="secondStatus">10</h1>
+            <button id="start-button">Start</button>
+            <button id="pause-button" class="hidden">Pause</button>
+            <button id="reset-button">Reset</button>
+        </div>
+    </div>
+
+    <!-- Side bar -->
+    <div class="sidebar-holder">
+
+    </div>
+
+
+</body>
+</html>
