@@ -93,7 +93,19 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("//set button id on click to hide first modal\n$(\"#customizable-holder\").on(\"click\", function () {\n    $(\"#modal1\").modal('show');\n})\n\n$(\"#next\").on(\"click\", function () {\n    $('#modal1').modal('hide');\n});\n//trigger next modal\n$(\"#next\").on(\"click\", function () {\n    $('#modal2').modal('show');\n});\n\n\n\n//# sourceURL=webpack:///./src/customize.js?");
+eval("//set button id on click to hide first modal\n$(\"#customizable-holder\").on(\"click\", function () {\n    $(\"#modal1\").modal('show');\n})\n\n$(\"#next\").on(\"click\", function () {\n    $('#modal1').modal('hide');\n});\n//trigger next modal\n$(\"#next\").on(\"click\", function () {\n    $('#modal2').modal('show');\n});\n\n\n\n\n//# sourceURL=webpack:///./src/customize.js?");
+
+/***/ }),
+
+/***/ "./src/exercises.js":
+/*!**************************!*\
+  !*** ./src/exercises.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Exercises; });\nclass Exercises {\n    constructor(){\n        this.exercisesArray = [];\n        this.options = {\n            'MOUNTAIN CLIMBERS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/6PNsrUzvQYSXjv23Fqo7_mountain-climbers.gif',\n            'CRISS CROSS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/GJW0xPsuRqiKt2gnmJ6I_criss-cross.gif',\n            'WIDE HIGH KNEES': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/Zx34kV6gQwu9A54BSRjM_widehighknees.gif',\n            'TRIPLE CRUNCHES': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/BaNQDSMdQzONCxYBoE9Q_triple-crunch.gif',\n            'PLANK JACKS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/vww9wzsSRlOcYxxvopyT_plank-jacks.gif',\n            'SEATED WINDMILLS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/5gtalT8xSoGkQBd6ptWR_seated-windmill.gif',\n            'SIDE LUNGE HOPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/2cjUYpzCSoqHev0EUaVK_Side-lunge-hops.gif',\n        }\n        this.appendAll();\n        this.appendLi = this.appendLi.bind(this);\n        // this.substring = this.substring.bind(this);\n    }\n\n    appendAll(){\n        const optionsKey = Object.keys(this.options);\n        const optionsValue = Object.values(this.options);\n        this.appendLi(optionsKey, optionsValue);\n    }\n\n    appendLi(keys, values) {\n        for (let i = 0; i < keys.length; i++) {\n            const searchResults = document.getElementById('search-results');\n            const li = document.createElement(\"li\");\n            const img = document.createElement(\"img\");\n            const p = document.createElement(\"p\");\n            p.innerHTML = keys[i];\n            img.src = values[i];\n            img.id = keys[i];\n            img.class = \"exercise-img\";\n            li.appendChild(p);\n            li.appendChild(img);\n            searchResults.appendChild(li);\n        }\n    }\n}\n\nconst findMatches = (word, options) => {\n    word = word.split(' ').join().toUpperCase();\n    return options.filter(option => {\n        const regex = new RegExp(word, 'gi');\n        return option.match(regex);\n    })\n}\n\nconst exercises = new Exercises();\nconst searchBar = document.getElementById('search-exercise');\nconst displayMatches = () => {\n    const matchArray = findMatches(searchBar.value, Object.keys(exercises.options));\n    if (matchArray.length === 0){\n        exercises.appendAll();\n    } else {\n        const prevSearchResults = document.getElementById('search-results');\n        while(prevSearchResults.firstChild){\n            prevSearchResults.removeChild(prevSearchResults.firstChild);\n        }\n        const optionsValue = matchArray.map(ele => exercises.options[ele]);\n        exercises.appendLi(matchArray, optionsValue);\n    }\n}\n\nsearchBar.addEventListener('change', displayMatches);\nsearchBar.addEventListener('keyup', displayMatches);\n\n//# sourceURL=webpack:///./src/exercises.js?");
 
 /***/ }),
 
@@ -105,7 +117,7 @@ eval("//set button id on click to hide first modal\n$(\"#customizable-holder\").
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _customize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customize */ \"./src/customize.js\");\n/* harmony import */ var _customize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_customize__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./timer */ \"./src/timer.js\");\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _customize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customize */ \"./src/customize.js\");\n/* harmony import */ var _customize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_customize__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./timer */ \"./src/timer.js\");\n/* harmony import */ var _exercises__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exercises */ \"./src/exercises.js\");\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
