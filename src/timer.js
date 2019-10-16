@@ -134,7 +134,7 @@ export default class Timer {
 
 }
 const timer = new Timer();
-const settingButton = document.getElementById('settings');
+const settingButton = document.getElementById('next');
 settingButton.addEventListener('click', timer.updateIntervals)
 const secondStatus = document.getElementById('secondStatus');
 const status = document.getElementById('status');

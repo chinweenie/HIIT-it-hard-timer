@@ -3,25 +3,73 @@
 <head>
     <title>HIIT it hard timer</title>
     <script type="text/javascript" src="dist/main.js" charset="utf-8" defer></script>
+    <!-- !-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./dist/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="./dist/css/styles.css" />
 </head>
 <body>
     <h1>Welcome to the HIIT it hard workout timer!</h1>
+    <button id="customizable-holder" class="trigger">Click here to customize your workout!</button>
 
     <!-- User's input' -->
-    <div class="customizable-holder">
-        <div id="form">
-            <input type="number" id="workInterval" value="0" min="0" max="60"> SECOND WORK
-            <input type="number" id="restInterval" value="0" min="0" max="60"> SECONDS REST
-            <input type="number" id="rounds" value="0" min="1"> ROUNDS
-            <button id="settings">Save</button>
-        </div>
-
-        <div id="customizer">
-
+    <!-- modal 1 -->
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Customize your HIIT timer</h4>
+                </div>
+                <div class="modal-body customize-timer">
+                    <input type="number" id="workInterval" value="0" min="0" max="60"> SECOND WORK
+                    <input type="number" id="restInterval" value="0" min="0" max="60"> SECONDS REST
+                    <input type="number" id="rounds" value="0" min="1"> ROUNDS
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="next">Next</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
+
+
+    <!-- modal 2 -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Customize your HIIT exercises</h4>
+                </div>
+                <div class="modal-body search-bar">
+                    <input type="text" id="searchExercise" placeholder="search your exercise here">
+                </div>
+                
+                <div class="modal-body search-results">
+                    <ul id="search-results">
+                        
+                    </ul>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="save">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+        
+
+
+    
+    
 
     <!-- Timer display -->
     <div class="timer-holder">
