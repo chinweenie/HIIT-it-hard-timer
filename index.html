@@ -39,7 +39,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="next">Next</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default close-modal" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -64,8 +64,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="save">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default close-modal" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -81,6 +81,7 @@
     <div class="timer-holder">
         <div id="timer">
             <h1 id="status">Rest</h1>
+            <div id="img-holder"></div>
             <h1 id="secondStatus">0</h1>
             <button id="start-button">Start</button>
             <button id="pause-button" class="hidden">Pause</button>

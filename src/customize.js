@@ -11,4 +11,12 @@ $("#next").on("click", function () {
     $('#modal2').modal('show');
 });
 
+$(".close-modal").on("click", function () {
+    $("#search-exercise").val("");
+    $("#rounds").val(0);
+    $(".exercise-img").attr("class", "exercise-img"); 
+});
+
+
+
 

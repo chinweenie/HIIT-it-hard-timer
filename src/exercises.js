@@ -1,6 +1,8 @@
 export default class Exercises {
     constructor(){
-        this.exercisesArray = [];
+        this.rounds = 0;
+        this.workInterval = 0;
+        this.restInterval = 0;
         this.options = {
             'MOUNTAIN CLIMBERS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/6PNsrUzvQYSXjv23Fqo7_mountain-climbers.gif',
             'CRISS CROSS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/GJW0xPsuRqiKt2gnmJ6I_criss-cross.gif',
@@ -11,8 +13,25 @@ export default class Exercises {
             'SIDE LUNGE HOPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/2cjUYpzCSoqHev0EUaVK_Side-lunge-hops.gif',
         }
         this.appendAll();
+        this.selected = [];
         this.appendLi = this.appendLi.bind(this);
-        // this.substring = this.substring.bind(this);
+        this.findMatches = this.findMatches.bind(this);
+        this.displayMatches = this.displayMatches.bind(this);
+        this.returnExercise = this.returnExercise.bind(this)
+        this.clearSelected = this.clearSelected.bind(this);
+        this.updateIntervals = this.updateIntervals.bind(this);
+    }
+
+
+
+    updateIntervals() {
+        const workInterval = document.getElementById('workInterval');
+        const restInterval = document.getElementById('restInterval');
+        const rounds = document.getElementById('rounds');
+        this.workInterval = Math.floor(workInterval.value * 1);
+        this.restInterval = Math.floor(restInterval.value * 1);
+        this.seconds = this.restInterval;
+        this.rounds = Math.floor(rounds.value * 1);
     }
 
     appendAll(){
@@ -30,37 +49,88 @@ export default class Exercises {
             p.innerHTML = keys[i];
             img.src = values[i];
             img.id = keys[i];
-            img.class = "exercise-img";
+            img.setAttribute("class", "exercise-img");
+            img.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (e.target.classList.contains("selected")){
+                    // remove from this.selected
+                    const key = e.target.id;
+                    for (let i = 0; i < this.selected.length; i++){
+                        if (Object.keys(this.selected[i])[0] === key){
+                            this.selected.splice(i, 1);
+                        }
+                    }
+                    e.target.classList.toggle("selected");
+
+                } else {
+                    // check if number of workout has exceeded
+                    if (this.rounds === this.selected.length){
+                        alert("You've selected enough exercises!");
+                        return;
+                    }
+                    // add into this.selected
+                    this.selected.push({
+                        [e.target.id]: this.options[e.target.id]
+                    })
+                    e.target.classList.toggle("selected");
+                }
+            });
             li.appendChild(p);
             li.appendChild(img);
             searchResults.appendChild(li);
         }
     }
-}
-
-const findMatches = (word, options) => {
-    word = word.split(' ').join().toUpperCase();
-    return options.filter(option => {
-        const regex = new RegExp(word, 'gi');
-        return option.match(regex);
-    })
-}
-
-const exercises = new Exercises();
-const searchBar = document.getElementById('search-exercise');
-const displayMatches = () => {
-    const matchArray = findMatches(searchBar.value, Object.keys(exercises.options));
-    if (matchArray.length === 0){
-        exercises.appendAll();
-    } else {
-        const prevSearchResults = document.getElementById('search-results');
-        while(prevSearchResults.firstChild){
-            prevSearchResults.removeChild(prevSearchResults.firstChild);
+    
+    findMatches(word, options){
+        word = word.split(' ').join().toUpperCase();
+        return options.filter(option => {
+            const regex = new RegExp(word, 'gi');
+            return option.match(regex);
+        })
+    }
+    
+    
+    displayMatches () {
+        const searchBar = document.getElementById('search-exercise');
+        const matchArray = this.findMatches(searchBar.value, Object.keys(this.options));
+        if (matchArray.length === 0){
+            this.appendAll();
+        } else {
+            const prevSearchResults = document.getElementById('search-results');
+            while(prevSearchResults.firstChild){
+                prevSearchResults.removeChild(prevSearchResults.firstChild);
+            }
+            const optionsValue = matchArray.map(ele => this.options[ele]);
+            this.appendLi(matchArray, optionsValue);
         }
-        const optionsValue = matchArray.map(ele => exercises.options[ele]);
-        exercises.appendLi(matchArray, optionsValue);
+    }
+
+    clearSelected(){
+        const workInterval = document.getElementById('workInterval');
+        const restInterval = document.getElementById('restInterval');
+        const rounds = document.getElementById('rounds');
+        const exerciseImg = Array.from(document.getElementsByClassName('exercise-img'));
+        exerciseImg.forEach(img => {
+            if (img.classList.contains("selected")){
+                img.classList.remove("selected");
+            }
+        })
+        this.selected = [];
+        this.workInterval = 0;
+        this.restInterval = 0;
+        this.rounds = 0;
+        workInterval.value = 0;
+        restInterval.value = 0;
+        rounds.value = 0;
+    }
+
+    returnExercise(){
+        return {
+            workInterval: this.workInterval,
+            restInterval: this.restInterval,
+            rounds: this.rounds,
+            selected: this.selected
+        };
     }
 }
 
-searchBar.addEventListener('change', displayMatches);
-searchBar.addEventListener('keyup', displayMatches);
