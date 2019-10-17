@@ -97,6 +97,17 @@ eval("//set button id on click to hide first modal\n$(\"#customizable-holder\").
 
 /***/ }),
 
+/***/ "./src/draggleble.js":
+/*!***************************!*\
+  !*** ./src/draggleble.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("let dragSrcEl = null;\n\nfunction handleDragStart(e) {\n    // Target (this) element is the source node.\n    dragSrcEl = this;\n\n    // Allowing the object to be draggleable\n    e.dataTransfer.effectAllowed = 'move';\n\n    e.dataTransfer.setData('text/html', this.outerHTML);\n\n    this.classList.add('dragElem');\n}\nfunction handleDragOver(e) {\n    if (e.preventDefault) {\n        e.preventDefault(); // Necessary. Allows us to drop.\n    }\n    this.classList.add('over');\n\n    e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.\n\n    return false;\n}\n\nfunction handleDragEnter(e) {\n    // e.target is the current hover target.\n}\n\nfunction handleDragLeave(e) {\n    this.classList.remove('over');  // this / e.target is previous target element.\n}\n\nfunction handleDrop(e) {\n    // this/e.target is current target element.\n\n    if (e.stopPropagation) {\n        e.stopPropagation(); // Stops some browsers from redirecting.\n    }\n\n    // Don't do anything if dropping the same column we're dragging.\n    if (dragSrcEl != this) {\n        this.parentNode.removeChild(dragSrcEl);\n        var dropHTML = e.dataTransfer.getData('text/html');\n        this.insertAdjacentHTML('beforebegin', dropHTML);\n        var dropElem = this.previousSibling;\n        addDnDHandlers(dropElem);\n\n    }\n    this.classList.remove('over');\n    return false;\n}\n\nfunction handleDragEnd(e) {\n    this.classList.remove('over');\n    this.classList.remove('dragElem');\n}\n\n\n\nfunction addDnDHandlers(elem) {\n    elem.addEventListener('dragstart', handleDragStart, false);\n    elem.addEventListener('dragenter', handleDragEnter, false)\n    elem.addEventListener('dragover', handleDragOver, false);\n    elem.addEventListener('dragleave', handleDragLeave, false);\n    elem.addEventListener('drop', handleDrop, false);\n    elem.addEventListener('dragend', handleDragEnd, false);\n}\n\nconst cols = document.querySelectorAll('#columns .column');\n[].forEach.call(cols, addDnDHandlers);\n\n\n\n//# sourceURL=webpack:///./src/draggleble.js?");
+
+/***/ }),
+
 /***/ "./src/exercises.js":
 /*!**************************!*\
   !*** ./src/exercises.js ***!
@@ -117,7 +128,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _customize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customize */ \"./src/customize.js\");\n/* harmony import */ var _customize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_customize__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./timer */ \"./src/timer.js\");\n/* harmony import */ var _exercises__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exercises */ \"./src/exercises.js\");\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _customize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./customize */ \"./src/customize.js\");\n/* harmony import */ var _customize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_customize__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./timer */ \"./src/timer.js\");\n/* harmony import */ var _exercises__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exercises */ \"./src/exercises.js\");\n/* harmony import */ var _draggleble__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./draggleble */ \"./src/draggleble.js\");\n/* harmony import */ var _draggleble__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_draggleble__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
