@@ -29,15 +29,16 @@ class Timer {
         this.arranged = arranged;
         this.rounds = rounds;
         secondStatus.innerHTML = this.restInterval;
+        document.getElementById("countdown-number").textContent = this.restInterval;
         debugger
     }
 
     countDown(){
         this.seconds -= 1;
         secondStatus.innerHTML = this.seconds;
+        document.getElementById("countdown-number").textContent = this.seconds;
         this.checkStatus();
     }
-
     checkStatus(){  
         if (this.rest && this.seconds === 0) {
             if (!this.checkFinish()){
@@ -53,32 +54,9 @@ class Timer {
 
     checkFinish(){
         if (this.rounds === this.roundCount){            
-            // window.clearInterval(this.interval);
-
-            // this.interval = undefined;
-            // this.workInterval = 0;
-            // this.restInterval = 0;
-            // this.seconds = 0;
-            // this.rest = false;
-            // this.paused = false;
-            // this.roundCount = 0;
-            // secondStatus.innerHTML = this.seconds;
-
-            // if (!pauseButton.classList.contains('hidden')) {
-            //     pauseButton.classList.add('hidden');
-            // }
-            // pauseButton.innerHTML = 'Pause';
-            // if (startButton.classList.contains('hidden')) {
-            //     startButton.classList.remove('hidden');
-            // }
-            // status.innerHTML = 'Congratulations! You have completed your workout today!';
-            // const imgHolder = document.getElementById('img-holder');
-            // while (imgHolder.firstChild) {
-            //     debugger
-            //     imgHolder.removeChild(imgHolder.firstChild);
-            // }
             this.resetTimer();
             status.innerHTML = 'Congratulations! You have completed your workout today!';
+            document.getElementsByTagName("circle")[0].style.animation = "";
             return true;
         }
         return false;
@@ -88,6 +66,8 @@ class Timer {
         if (status.innerHTML === 'Rest'){
             this.seconds = this.workInterval + 1;
             status.innerHTML = 'Work';
+            document.getElementsByTagName("circle")[0].style.animation = `countdown ${this.workInterval}s linear infinite forwards`
+
         } else {
            
             this.seconds = this.restInterval + 1;
@@ -101,6 +81,8 @@ class Timer {
             p.innerHTML = Object.keys(this.arranged[this.roundCount]);
             img.src = Object.values(this.arranged[this.roundCount]);
             imgHolder.appendChild(img);
+            document.getElementsByTagName("circle")[0].style.animation = `countdown ${this.restInterval}s linear infinite forwards`
+
         };
     }; 
 
@@ -124,6 +106,7 @@ class Timer {
             return;
         }
         this.interval = window.setInterval(this.countDown, 1000);
+        document.getElementsByTagName("circle")[0].style.animation = `countdown ${this.restInterval}s linear infinite forwards`
         if (pauseButton.classList.contains('hidden')){
             pauseButton.classList.remove('hidden');
         }
@@ -151,6 +134,7 @@ class Timer {
         this.paused = false;
         this.roundCount = 0;
         secondStatus.innerHTML = this.seconds;
+        document.getElementById("countdown-number").textContent = this.seconds;
         status.innerHTML = 'Rest';
         
         if (!pauseButton.classList.contains('hidden')){

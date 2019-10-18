@@ -98,11 +98,9 @@ export default class Exercises {
     }
     
     checkPrevSelected(searchResults){
-        debugger
         const liArray = Array.from(searchResults.childNodes);
         const selectedExercises = this.selected.map(ele => Object.keys(ele)[0]);
         liArray.forEach(li => {
-            debugger
             if (selectedExercises.includes(li.childNodes[0].innerHTML)){
                 li.childNodes[1].classList.toggle("selected");
             }
@@ -162,7 +160,13 @@ export default class Exercises {
             if (img.classList.contains("selected")){
                 img.classList.remove("selected");
             }
-        })
+        });
+
+        const displaySelected = document.getElementById('columns');
+        while(displaySelected.firstChild){
+            debugger
+            displaySelected.removeChild(displaySelected.firstChild);
+        };
         this.selected = [];
         this.arranged = [];
         this.workInterval = 0;
