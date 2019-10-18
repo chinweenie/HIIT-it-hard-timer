@@ -14,6 +14,7 @@ export default class Exercises {
         }
         this.appendAll();
         this.selected = [];
+        this.arranged = [];
         this.appendLi = this.appendLi.bind(this);
         this.findMatches = this.findMatches.bind(this);
         this.displayMatches = this.displayMatches.bind(this);
@@ -21,6 +22,7 @@ export default class Exercises {
         this.clearSelected = this.clearSelected.bind(this);
         this.updateIntervals = this.updateIntervals.bind(this);
         this.updateSequence = this.updateSequence.bind(this);
+        this.checkIfLess = this.checkIfLess.bind(this);
     }
 
 
@@ -121,6 +123,14 @@ export default class Exercises {
         }
     }
 
+    checkIfLess(){
+        if (this.selected.length < this.rounds) {
+            alert(`You need to choose ${this.rounds - this.selected.length} more exercise(s)`);
+            return true;
+        }
+        return false;
+    }
+
     clearSelected(){
         const workInterval = document.getElementById('workInterval');
         const restInterval = document.getElementById('restInterval');
@@ -143,8 +153,12 @@ export default class Exercises {
     updateSequence(){
         const cols = Array.from(document.querySelectorAll('#columns .column'));
         cols.forEach(col => {
-            console.log(col);
+            const key = col.firstElementChild.innerHTML;
+            this.arranged.push({
+                [key]: this.options[key]
+            });
         });
+        console.log(this.arranged);
     }
 
     returnExercise(){
@@ -152,7 +166,7 @@ export default class Exercises {
             workInterval: this.workInterval,
             restInterval: this.restInterval,
             rounds: this.rounds,
-            selected: this.selected
+            arranged: this.arranged
         };
     }
 }

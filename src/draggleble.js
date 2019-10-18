@@ -73,6 +73,7 @@ export default class Draggable {
     handleDragEnd(e){
         const target = this.checkTarget(e.target);
         target.classList.remove('over');
+        target.classList.remove('dragElem');
     }
 
     addDnDHandlers(elem) {

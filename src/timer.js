@@ -5,7 +5,7 @@ class Timer {
     constructor(){
         this.workInterval = 0;
         this.restInterval = 0;
-        this.selected = [];
+        this.arranged = [];
         this.rounds = 0;
         this.rest = false;
         this.roundCount = 0;
@@ -23,11 +23,11 @@ class Timer {
         this.checkFinish = this.checkFinish.bind(this);
     }
 
-    update({workInterval, restInterval, rounds, selected}){
+    update({workInterval, restInterval, rounds, arranged}){
         this.workInterval = workInterval;
         this.restInterval = restInterval;
         this.seconds = this.restInterval;
-        this.selected = selected;
+        this.arranged = arranged;
         this.rounds = rounds;
         secondStatus.innerHTML = this.restInterval;
     }
@@ -174,7 +174,6 @@ class Timer {
 // customize timer and exercises
 const exercises = new Exercises();
 const timer = new Timer();
-// const draggable = new Draggable();
 const next = document.getElementById('next');
 const searchBar = document.getElementById('search-exercise');
 const save = document.getElementById('save');
@@ -199,7 +198,6 @@ searchBar.addEventListener('keyup', exercises.displayMatches);
 
 rearrange.addEventListener('click', () => {
     exercises.displaySelected(new Draggable());
-    // [].forEach.call(cols, draggable.addDnDHandlers);
 });
 
 save.addEventListener('click', () => {
