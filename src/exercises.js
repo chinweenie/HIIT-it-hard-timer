@@ -13,7 +13,21 @@ export default class Exercises {
             'PLANK JACKS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/vww9wzsSRlOcYxxvopyT_plank-jacks.gif',
             'SEATED WINDMILLS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/5gtalT8xSoGkQBd6ptWR_seated-windmill.gif',
             'SIDE LUNGE HOPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/2cjUYpzCSoqHev0EUaVK_Side-lunge-hops.gif',
-        }
+            'FAST SQUATS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/iEnyThlnSEyA8MGJwo1C_fast-squats.gif',
+            'LONG LUNGE PULSES': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/LiEW53YRQiY3toG54VZM_long-lunge-pulses.gif',
+            'SINGLE LEG HOPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/u4zm0jksSyqaUFscOkL7_single-leg-hops.gif',
+            'ELEVATED HOT POTATO': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/e7vxj2MNTyi8L6GwVrhY_elevated-hot-potato.gif',
+            'PLIE HOPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/MwgZmTAnR1qnoeP379zG_plie-jumps.gif',
+            'ELEVATED CLAMS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/lcl4DKpQhSVygdQ2Mc8Q_elevated-clam-shells.gif',
+            'FROGGY HOPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/pgz5sYnNTQKibgRD2GxU_froggy-hops.gif',
+            'HIGH KNEES': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/CeOpDliQdeijQyKdoCJr_high-knees.gif',
+            'HALF COBRA PUSH UPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/5CzQ7rKHSkKUAa8n8OTH_half-cobra-pushup.gif',
+            'ZIG-ZAG JUMPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/0KB64VV7R4u6cotQ3iLP_zig-zag-jumps.gif',
+            'UP UP DOWN DOWN': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/vu1LnK5TsakaUifLVjfd_up-up-down-down.gif',
+            'SQUAT CLAPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/B1liKKITQiqXYVkP9v3T_squat-claps.gif',
+            'PUSH UP WITH SIDE PLANK': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/ePfQvb6RC6ApOLkcvGgK_pushups-to-side-plank.gif',
+            'PIKED HOPS': 'https://s3.amazonaws.com/kajabi-storefronts-production/products/10120/images/xKfCSIFnQjCYuioCw5ge_piked-hops.gif',
+        };
         this.appendAll();
         this.selected = [];
         this.arranged = [];

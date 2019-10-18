@@ -79,6 +79,7 @@ class Timer {
             const p = document.createElement("p");
             p.innerHTML = Object.keys(this.arranged[this.roundCount]);
             img.src = Object.values(this.arranged[this.roundCount]);
+            imgHolder.appendChild(p);
             imgHolder.appendChild(img);
 
         };
@@ -122,6 +123,7 @@ class Timer {
         const p = document.createElement("p");
         p.innerHTML = Object.keys(this.arranged[this.roundCount]);
         img.src = Object.values(this.arranged[this.roundCount]);
+        imgHolder.appendChild(p);
         imgHolder.appendChild(img);
     }
 
