@@ -25,6 +25,7 @@ export default class Exercises {
         this.updateIntervals = this.updateIntervals.bind(this);
         this.updateSequence = this.updateSequence.bind(this);
         this.checkIfLess = this.checkIfLess.bind(this);
+        this.checkPrevSelected = this.checkPrevSelected.bind(this);
     }
 
 
@@ -96,6 +97,18 @@ export default class Exercises {
         })
     }
     
+    checkPrevSelected(searchResults){
+        debugger
+        const liArray = Array.from(searchResults.childNodes);
+        const selectedExercises = this.selected.map(ele => Object.keys(ele)[0]);
+        liArray.forEach(li => {
+            debugger
+            if (selectedExercises.includes(li.childNodes[0].innerHTML)){
+                li.childNodes[1].classList.toggle("selected");
+            }
+        })
+    }
+    
     
     displayMatches () {
         const searchBar = document.getElementById('search-exercise');
@@ -110,6 +123,8 @@ export default class Exercises {
             const optionsValue = matchArray.map(ele => this.options[ele]);
             this.appendLi(matchArray, optionsValue);
         }
+        const searchResults = document.getElementById('search-results');
+        this.checkPrevSelected(searchResults);
     }
 
     displaySelected(draggable){
