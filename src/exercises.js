@@ -20,6 +20,7 @@ export default class Exercises {
         this.returnExercise = this.returnExercise.bind(this)
         this.clearSelected = this.clearSelected.bind(this);
         this.updateIntervals = this.updateIntervals.bind(this);
+        this.updateSequence = this.updateSequence.bind(this);
     }
 
 
@@ -105,6 +106,21 @@ export default class Exercises {
         }
     }
 
+    displaySelected(draggable){
+        const columns = document.getElementById('columns');
+        for (let i = 0; i < this.selected.length; i++){
+            const li = document.createElement("li"); 
+            li.setAttribute("class", "column");
+            li.setAttribute("draggable", true);
+            const key = Object.keys(this.selected[i])[0];
+            const header = document.createElement("header"); 
+            header.innerHTML = key;   
+            li.appendChild(header);
+            draggable.addDnDHandlers(li);
+            columns.appendChild(li);
+        }
+    }
+
     clearSelected(){
         const workInterval = document.getElementById('workInterval');
         const restInterval = document.getElementById('restInterval');
@@ -122,6 +138,13 @@ export default class Exercises {
         workInterval.value = 0;
         restInterval.value = 0;
         rounds.value = 0;
+    }
+
+    updateSequence(){
+        const cols = Array.from(document.querySelectorAll('#columns .column'));
+        cols.forEach(col => {
+            console.log(col);
+        });
     }
 
     returnExercise(){

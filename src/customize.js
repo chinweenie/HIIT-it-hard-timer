@@ -11,6 +11,14 @@ $("#next").on("click", function () {
     $('#modal2').modal('show');
 });
 
+$("#rearrange").on("click", function () {
+    $("#modal2").modal('hide');
+})
+
+$("#rearrange").on("click", function () {
+    $("#modal3").modal('show');
+})
+
 $(".close-modal").on("click", function () {
     $("#search-exercise").val("");
     $("#rounds").val(0);

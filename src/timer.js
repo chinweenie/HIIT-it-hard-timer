@@ -1,4 +1,6 @@
 import Exercises from './exercises';
+import Draggable from './draggleble';
+
 class Timer {
     constructor(){
         this.workInterval = 0;
@@ -130,7 +132,6 @@ class Timer {
         const imgHolder = document.getElementById('img-holder');
         while (imgHolder.firstChild) {
             imgHolder.removeChild(imgHolder.firstChild);
-            debugger
         }
         const img = document.createElement("img");
         const p = document.createElement("p");
@@ -163,7 +164,6 @@ class Timer {
 
         const imgHolder = document.getElementById('img-holder');
         while (imgHolder.firstChild) {
-            debugger
             imgHolder.removeChild(imgHolder.firstChild);
         }
     }
@@ -174,28 +174,44 @@ class Timer {
 // customize timer and exercises
 const exercises = new Exercises();
 const timer = new Timer();
+// const draggable = new Draggable();
 const next = document.getElementById('next');
 const searchBar = document.getElementById('search-exercise');
 const save = document.getElementById('save');
+const rearrange = document.getElementById('rearrange');
 const closeButtons = Array.from(document.getElementsByClassName("close-modal"));
-
-next.addEventListener('click', exercises.updateIntervals);
-closeButtons.forEach(button => {
-    button.addEventListener("click", exercises.clearSelected);
-    button.addEventListener("click", timer.resetTimer);
-});
-searchBar.addEventListener('change', exercises.displayMatches);
-searchBar.addEventListener('keyup', exercises.displayMatches);
-save.addEventListener('click', async () => {
-    await timer.update(exercises.returnExercise());
-    exercises.clearSelected();
-});
-
+const cols = document.querySelectorAll('#columns .column');
 const secondStatus = document.getElementById('secondStatus');
 const status = document.getElementById('status');
 const startButton = document.getElementById('start-button');
 const pauseButton = document.getElementById('pause-button');
 const resetButton = document.getElementById('reset-button');
+
+next.addEventListener('click', exercises.updateIntervals);
+
+closeButtons.forEach(button => {
+    button.addEventListener("click", exercises.clearSelected);
+    button.addEventListener("click", timer.resetTimer);
+});
+
+searchBar.addEventListener('change', exercises.displayMatches);
+searchBar.addEventListener('keyup', exercises.displayMatches);
+
+rearrange.addEventListener('click', () => {
+    exercises.displaySelected(new Draggable());
+    // [].forEach.call(cols, draggable.addDnDHandlers);
+});
+
+save.addEventListener('click', () => {
+    exercises.updateSequence();
+    // reupdate the sequence of workout in exercises instance
+    timer.update(exercises.returnExercise());
+    exercises.clearSelected();
+});
+
+
 startButton.addEventListener('click', timer.startTimer);
+
 pauseButton.addEventListener('click', timer.pauseTimer);
+
 resetButton.addEventListener('click', timer.resetTimer);
