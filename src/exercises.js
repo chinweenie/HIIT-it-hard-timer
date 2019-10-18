@@ -127,6 +127,10 @@ export default class Exercises {
 
     displaySelected(draggable){
         const columns = document.getElementById('columns');
+        while (columns.firstChild) {
+            debugger
+            columns.removeChild(columns.firstChild);
+        };
         for (let i = 0; i < this.selected.length; i++){
             const li = document.createElement("li"); 
             li.setAttribute("class", "column");

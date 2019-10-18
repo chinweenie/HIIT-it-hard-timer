@@ -39,6 +39,7 @@ class Timer {
         document.getElementById("countdown-number").textContent = this.seconds;
         this.checkStatus();
     }
+
     checkStatus(){  
         if (this.rest && this.seconds === 0) {
             if (!this.checkFinish()){
@@ -67,7 +68,6 @@ class Timer {
             this.seconds = this.workInterval + 1;
             status.innerHTML = 'Work';
             document.getElementsByTagName("circle")[0].style.animation = `countdown ${this.workInterval}s linear infinite forwards`
-
         } else {
            
             this.seconds = this.restInterval + 1;
