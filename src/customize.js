@@ -23,7 +23,15 @@ $(".close-modal").on("click", function () {
     $("#search-exercise").val("");
     $("#rounds").val(0);
     $(".exercise-img").attr("class", "exercise-img"); 
+    $("#rearrange").attr("class", "btn btn-primary hidden");
 });
+
+$("#save").on("click", function () {
+    $("#search-exercise").val("");
+    $("#rounds").val(0);
+    $(".exercise-img").attr("class", "exercise-img");
+    $("#rearrange").attr("class", "btn btn-primary hidden");
+})
 
 
 

@@ -1,3 +1,5 @@
+import Draggable from './draggleble';
+
 export default class Exercises {
     constructor(){
         this.rounds = 0;
@@ -55,6 +57,7 @@ export default class Exercises {
             img.setAttribute("class", "exercise-img");
             img.addEventListener('click', (e) => {
                 e.preventDefault();
+                
                 if (e.target.classList.contains("selected")){
                     // remove from this.selected
                     const key = e.target.id;
@@ -76,6 +79,7 @@ export default class Exercises {
                         [e.target.id]: this.options[e.target.id]
                     })
                     e.target.classList.toggle("selected");
+                    this.checkIfLess();
                 }
             });
             li.appendChild(p);
@@ -124,9 +128,12 @@ export default class Exercises {
     }
 
     checkIfLess(){
-        if (this.selected.length < this.rounds) {
-            alert(`You need to choose ${this.rounds - this.selected.length} more exercise(s)`);
-            return true;
+        if (this.selected.length === this.rounds) {
+            const rearrange = document.getElementById('rearrange');
+            rearrange.classList.toggle("hidden");
+            rearrange.addEventListener('click', () => {
+                this.displaySelected(new Draggable());
+            });
         }
         return false;
     }
@@ -142,6 +149,7 @@ export default class Exercises {
             }
         })
         this.selected = [];
+        this.arranged = [];
         this.workInterval = 0;
         this.restInterval = 0;
         this.rounds = 0;

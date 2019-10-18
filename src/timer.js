@@ -1,5 +1,4 @@
 import Exercises from './exercises';
-import Draggable from './draggleble';
 
 class Timer {
     constructor(){
@@ -30,6 +29,7 @@ class Timer {
         this.arranged = arranged;
         this.rounds = rounds;
         secondStatus.innerHTML = this.restInterval;
+        debugger
     }
 
     countDown(){
@@ -98,8 +98,8 @@ class Timer {
             }
             const img = document.createElement("img");
             const p = document.createElement("p");
-            p.innerHTML = Object.keys(this.selected[this.roundCount]);
-            img.src = Object.values(this.selected[this.roundCount]);
+            p.innerHTML = Object.keys(this.arranged[this.roundCount]);
+            img.src = Object.values(this.arranged[this.roundCount]);
             imgHolder.appendChild(img);
         };
     }; 
@@ -135,14 +135,14 @@ class Timer {
         }
         const img = document.createElement("img");
         const p = document.createElement("p");
-        p.innerHTML = Object.keys(this.selected[this.roundCount]);
-        img.src = Object.values(this.selected[this.roundCount]);
+        p.innerHTML = Object.keys(this.arranged[this.roundCount]);
+        img.src = Object.values(this.arranged[this.roundCount]);
         imgHolder.appendChild(img);
     }
 
     resetTimer(e){
         window.clearInterval(this.interval);
-        this.selected = [];
+        this.arranged = [];
         this.interval = undefined;
         this.workInterval = 0;
         this.restInterval = 0;
@@ -177,9 +177,7 @@ const timer = new Timer();
 const next = document.getElementById('next');
 const searchBar = document.getElementById('search-exercise');
 const save = document.getElementById('save');
-const rearrange = document.getElementById('rearrange');
 const closeButtons = Array.from(document.getElementsByClassName("close-modal"));
-const cols = document.querySelectorAll('#columns .column');
 const secondStatus = document.getElementById('secondStatus');
 const status = document.getElementById('status');
 const startButton = document.getElementById('start-button');
@@ -196,13 +194,11 @@ closeButtons.forEach(button => {
 searchBar.addEventListener('change', exercises.displayMatches);
 searchBar.addEventListener('keyup', exercises.displayMatches);
 
-rearrange.addEventListener('click', () => {
-    exercises.displaySelected(new Draggable());
-});
+
+
 
 save.addEventListener('click', () => {
     exercises.updateSequence();
-    // reupdate the sequence of workout in exercises instance
     timer.update(exercises.returnExercise());
     exercises.clearSelected();
 });
