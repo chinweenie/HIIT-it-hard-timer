@@ -114,7 +114,7 @@ class Timer {
             pauseButton.classList.remove('hidden');
         }
         startButton.classList.add('hidden');
-
+        customize.classList.add('hidden');
         const imgHolder = document.getElementById('img-holder');
         while (imgHolder.firstChild) {
             imgHolder.removeChild(imgHolder.firstChild);
@@ -153,6 +153,7 @@ class Timer {
         while (imgHolder.firstChild) {
             imgHolder.removeChild(imgHolder.firstChild);
         }
+        customize.classList.remove('hidden');
     }
 
 }
@@ -170,6 +171,7 @@ const status = document.getElementById('status');
 const startButton = document.getElementById('start-button');
 const pauseButton = document.getElementById('pause-button');
 const resetButton = document.getElementById('reset-button');
+const customize = document.getElementById('customizable-holder');
 
 next.addEventListener('click', exercises.updateIntervals);
 

@@ -1,3 +1,18 @@
+html {
+  background-color: black;
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
+  width: 1000px;
+  margin: 50px auto;
+  border-radius: 5px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hidden {
     display: none;
 }
@@ -34,6 +49,10 @@ input#search-exercise {
 
 .customize-timer > div {
     margin-bottom: 10px;
+}
+
+.modal {
+  color: black;
 }
 
 .modal-header {
