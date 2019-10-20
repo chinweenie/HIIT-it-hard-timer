@@ -29,13 +29,14 @@ class Timer {
         this.arranged = arranged;
         this.rounds = rounds;
         secondStatus.innerHTML = this.restInterval;
+        document.getElementById("countdown-number").textContent = this.restInterval;
         debugger
     }
 
     countDown(){
         this.seconds -= 1;
-        
         secondStatus.innerHTML = this.seconds;
+        document.getElementById("countdown-number").textContent = this.seconds;
         this.checkStatus();
     }
 
@@ -58,6 +59,7 @@ class Timer {
         if (this.rounds === this.roundCount){            
             this.resetTimer();
             status.innerHTML = 'Congratulations! You have completed your workout today!';
+            document.getElementsByTagName("circle")[0].style.animation = null;
             return true;
         }
         return false;
@@ -67,10 +69,17 @@ class Timer {
         if (status.innerHTML === 'Rest'){
             this.seconds = this.workInterval + 1;
             status.innerHTML = 'Work';
+            debugger
+            document.getElementsByTagName("circle")[0].style.animation = null;
+            document.getElementsByTagName("circle")[0].style.animation = `countdown ${this.workInterval + 1}s 1s linear infinite forwards`
         } else {
            
             this.seconds = this.restInterval + 1;
             status.innerHTML = 'Rest';
+            debugger
+            document.getElementsByTagName("circle")[0].style.animation = null;
+            // document.getElementsByTagName("circle")[0].style.animation = `countdown ${this.restInterval + 1}s linear infinite forwards`
+
             const imgHolder = document.getElementById('img-holder');
             while(imgHolder.firstChild){
                 imgHolder.removeChild(imgHolder.firstChild);
@@ -139,7 +148,8 @@ class Timer {
         this.roundCount = 0;
         secondStatus.innerHTML = this.seconds;
         status.innerHTML = 'Rest';
-        
+        document.getElementsByTagName("circle")[0].style.animation = null;
+
         if (!pauseButton.classList.contains('hidden')){
             pauseButton.classList.add('hidden');
         }
