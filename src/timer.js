@@ -68,7 +68,7 @@ class Timer {
     changeStatus(){
         if (status.innerHTML === 'Rest'){
             this.seconds = this.workInterval + 1;
-            status.innerHTML = 'Work';
+            status.innerHTML = 'Work!';
             debugger
             document.getElementsByTagName("circle")[0].style.animation = null;
             document.getElementsByTagName("circle")[0].style.animation = `countdown ${this.workInterval + 1}s 1s linear infinite forwards`
@@ -78,7 +78,6 @@ class Timer {
             status.innerHTML = 'Rest';
             debugger
             document.getElementsByTagName("circle")[0].style.animation = null;
-            // document.getElementsByTagName("circle")[0].style.animation = `countdown ${this.restInterval + 1}s linear infinite forwards`
 
             const imgHolder = document.getElementById('img-holder');
             while(imgHolder.firstChild){
@@ -164,6 +163,7 @@ class Timer {
             imgHolder.removeChild(imgHolder.firstChild);
         }
         customize.classList.remove('hidden');
+       
     }
 
 }
@@ -200,6 +200,8 @@ save.addEventListener('click', () => {
     exercises.updateSequence();
     timer.update(exercises.returnExercise());
     exercises.clearSelected();
+    document.getElementsByClassName("title")[0].classList.toggle("hidden");
+    document.getElementsByClassName("timer-holder")[0].classList.toggle("hidden");
 });
 
 
@@ -207,4 +209,8 @@ startButton.addEventListener('click', timer.startTimer);
 
 pauseButton.addEventListener('click', timer.pauseTimer);
 
-resetButton.addEventListener('click', timer.resetTimer);
+resetButton.addEventListener('click', () => {
+    timer.resetTimer();
+    document.getElementsByClassName("title")[0].classList.toggle("hidden");
+    document.getElementsByClassName("timer-holder")[0].classList.toggle("hidden");
+});

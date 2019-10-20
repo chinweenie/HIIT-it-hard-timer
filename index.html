@@ -15,19 +15,23 @@
         <link rel="stylesheet" type="text/css" href="./dist/css/title.css" />
         <link rel="stylesheet" type="text/css" href="./dist/css/circular-svg.css" />
         <link rel="stylesheet" type="text/css" href="./dist/css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="./dist/css/timer.css" />
 
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+
     </head>
 
     <body>
-        <article class="container">
-            <blockquote>
-                <strong>Train</strong> like <em>a beast</em> and look like a <strong>beauty</strong>
-            </blockquote>
-            <b>Nike</b>
-        
-        </article>
-        <button type="button" id="customizable-holder" class="trigger btn btn-primary">Click here to customize your workout!</button>
+        <div class="title">
+            <article class="container">
+                <blockquote>
+                    <strong>Train</strong> like <em>a beast</em> and look like a <strong>beauty</strong>
+                </blockquote>
+                <b>Nike</b>   
+            </article>
+            <button type="button" id="customizable-holder" class="trigger btn btn-primary">Click here to customize your workout!</button>
+        </div>
 
         <!-- User's input' -->
         <!-- modal 1 -->
@@ -106,7 +110,7 @@
         </div>
             
         <!-- Timer display -->
-        <div class="timer-holder">
+        <div class="timer-holder hidden">
             <div id="timer">
                 <h1 id="status">Rest</h1>
                 <div id="img-holder"></div>
