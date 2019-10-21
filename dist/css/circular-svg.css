@@ -1,17 +1,10 @@
-
 #countdown {
   position: relative;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 30px;
   height: 40px;
   width: 40px;
   text-align: center;
-}
-
-#countdown-number {
-  color: white;
-  display: inline-block;
-  line-height: 40px;
 }
 
 svg {
@@ -27,8 +20,8 @@ svg circle {
   stroke-dasharray: 113px;
   stroke-dashoffset: 0px;
   stroke-linecap: round;
-  stroke-width: 2px;
-  stroke: white;
+  stroke-width: 4px;
+  stroke: rgba(0,0,0,.5);
   fill: none;
   /* animation: countdown 50s linear infinite forwards; */
 }

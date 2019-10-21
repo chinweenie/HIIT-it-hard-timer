@@ -142,7 +142,6 @@ export default class Exercises {
     displaySelected(draggable){
         const columns = document.getElementById('columns');
         while (columns.firstChild) {
-            debugger
             columns.removeChild(columns.firstChild);
         };
         for (let i = 0; i < this.selected.length; i++){
@@ -182,7 +181,6 @@ export default class Exercises {
 
         const displaySelected = document.getElementById('columns');
         while(displaySelected.firstChild){
-            debugger
             displaySelected.removeChild(displaySelected.firstChild);
         };
         this.selected = [];

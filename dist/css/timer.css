@@ -1,14 +1,55 @@
 .timer-holder {
-    margin-top: 50px;
-    background-color: cyan;
-    color: rgba(0,0,0,.7);
-    font-family: 'Oswald', 'Helvetica Neue', arial;
-    box-shadow: 10px 10px rgba(0,0,0,.3);
-	width: 40%;
+    background: rgba(0,0,0,.1);
+    width: 98%;
+    height: 98%;
 	margin: 0 auto;
-	margin-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 	padding-bottom: 20px;
 	border-radius: 20px;
-    box-shadow: 10px 10px rgba(0,0,0,.3);
-    position: fixed;
+	box-shadow: 10px 10px rgba(0,0,0,.3);
+}
+
+#timer {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-groups {
+    margin-top: 20px;
+}
+
+.button-groups > button {
+    margin: auto 10px;
+}
+
+#status {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+#img-holder {
+    text-align: center;
+    width: 500px;
+    height: 300px;
+}
+
+#img-holder > p {
+    margin-top: 20px;
+    font-size: 35px;
+}
+
+#img-holder > img {
+    margin-top: 20px;
+    width: 60%;
+    border-radius: 20px;
+}
+
+#countdown-number {
+  color: rgba(0,0,0,.5);
+  display: inline-block;
+  line-height: 40px;
+  font-size: 25px;
 }

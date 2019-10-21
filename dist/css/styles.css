@@ -98,15 +98,12 @@ img {
 }
 
 .column {
-  width: 162px;
   padding-bottom: 5px;
   padding-top: 5px;
   text-align: center;
   cursor: move;
 }
 .column header {
-  height: 20px;
-  width: 150px;
   color: black;
   background-color: #ccc;
   padding: 5px;
