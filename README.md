@@ -7,9 +7,9 @@ HIIT it hard timer is a customizable HIIT workout timer where users can pick:
 * number of rounds
 * type of exercises
 * total number sets 
-A good example is the classic HIIT 50 seconds of work and 10 seconds of rest or
+* A good example is the classic HIIT 50 seconds of work and 10 seconds of rest or
 a TABATA session of 20 seconds work and 10 seconds rest.
-During the 50 seconds of work, a giphy will be displayed to show users what 
+* During the 50 seconds of work, a giphy will be displayed to show users what 
 exercise they need to do for that interval.
 #Train Like a Beast, Look Like a Beauty
 
@@ -19,25 +19,22 @@ With this timer, users will be able to:
 * start, pause and reset the timer
 * search for exercise (Giphy will be displayed below the timer if the exercise
  was found, else the title of the exercise will be displayed instead.)
-* Choose the background color of timer during different intervals
-* Record the reps for each exercise
+* rearrange the sequence of exercises using the responsive drag and drop functionality
 
 This application includes:
 * a production README
 * a user interface for users to customize their workout and search for exercises
-* a list next to the timer that shows all of the exercises and the reps of each
-exercise
+
 
 ## Wireframse
 This application consists of a single screen with the timer itself and a list 
 of exercises next to it. The will be a footer that leads the users to my Github,
 LinkedIn and the user manual. Timer controls include start, pause and reset 
 buttons. Before the display of timer, users will have to insert their options 
-first for customizing the workout, or they can choose to use the default mode
-(my personal favourite is 50:10) and randomized 28 exercises.
+first for customizing the workout.
 
 ## Architecture and Technologies
-* `Javascript` for logic
+* `Javascript` f
 
 
 
