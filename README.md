@@ -20,6 +20,7 @@ exercise they need to do for that interval.
 <img src="dist/timer.png" alt="first page">
 
 ## Technical details
+Users can rearrange the exercises they have chosen before starting the timer using a simple drag and drop feature
 ```javascript
 handleDragStart(e){
         const target = this.checkTarget(e.target);
@@ -86,3 +87,5 @@ addDnDHandlers(elem) {
         elem.addEventListener('dragend', (e) => this.handleDragEnd(e), false);
     }
 ```
+## Author
+Winnie Chin
