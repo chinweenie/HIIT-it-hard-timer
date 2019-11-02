@@ -20,7 +20,63 @@ exercise they need to do for that interval.
 <img src="dist/timer.png" alt="first page">
 
 ## Technical details
-`
+```javascript
+handleDragStart(e){
+        const target = this.checkTarget(e.target);
+        this.dragSrcEl = target;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', target.outerHTML);
+
+        target.classList.add('dragElem');
+    }
+
+    handleDragOver(e){
+        if(e.preventDefault) {
+            e.preventDefault(); // Necessary. Allows us to drop.
+        }
+        const target = this.checkTarget(e.target);
+        target.classList.add("over");
+        e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+        return false;
+    }
+
+    handleDragEnter(e) {
+    // this / e.target is the current hover target.
+    }
+
+    handleDragLeave(e){
+        const target = this.checkTarget(e.target);
+        target.classList.remove("over");
+    }
+
+    handleDrop(e){
+        if (e.stopPropagation) {
+            e.stopPropagation(); // Stops some browsers from redirecting.
+        }
+        const target = this.checkTarget(e.target);
+        // Don't do anything if dropping the same column we're dragging.
+        if (this.dragSrcEl != target) {
+            // Set the source column's HTML to the HTML of the column we dropped on.
+            //alert(this.outerHTML);
+            //dragSrcEl.innerHTML = this.innerHTML;
+            //this.innerHTML = e.dataTransfer.getData('text/html');
+            target.parentNode.removeChild(this.dragSrcEl);
+            const dropHTML = e.dataTransfer.getData('text/html');
+            target.insertAdjacentHTML('beforebegin', dropHTML);
+            const dropElem = target.previousSibling;
+            this.addDnDHandlers(dropElem);
+        }
+        target.classList.remove('over');
+        return false;
+    }
+
+    handleDragEnd(e){
+        const target = this.checkTarget(e.target);
+        target.classList.remove('over');
+        target.classList.remove('dragElem');
+    }
+
 addDnDHandlers(elem) {
         elem.addEventListener('dragstart', (e) => this.handleDragStart(e), false);
         elem.addEventListener('dragenter', (e) => this.handleDragEnter(e), false)
@@ -29,8 +85,4 @@ addDnDHandlers(elem) {
         elem.addEventListener('drop', (e) => this.handleDrop(e), false);
         elem.addEventListener('dragend', (e) => this.handleDragEnd(e), false);
     }
-`
-
-
-
-
+```
