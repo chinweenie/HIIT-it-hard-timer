@@ -17,7 +17,19 @@ exercise they need to do for that interval.
 #Train Like a Beast, Look Like a Beauty
 
 [HIIT-it-hard timer](https://chinweenie.github.io/HIIT-it-hard-timer/)
+<img src="dist/timer.png" alt="first page">
 
+## Technical details
+`
+addDnDHandlers(elem) {
+        elem.addEventListener('dragstart', (e) => this.handleDragStart(e), false);
+        elem.addEventListener('dragenter', (e) => this.handleDragEnter(e), false)
+        elem.addEventListener('dragover', (e) => this.handleDragOver(e), false);
+        elem.addEventListener('dragleave', (e) => this.handleDragLeave(e), false);
+        elem.addEventListener('drop', (e) => this.handleDrop(e), false);
+        elem.addEventListener('dragend', (e) => this.handleDragEnd(e), false);
+    }
+`
 
 
 
